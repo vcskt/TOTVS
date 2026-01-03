@@ -70,18 +70,6 @@ services:
         condition: service_healthy
       licenseserver:
         condition: service_started
-    healthcheck:
-      test:
-        - CMD
-        - isql
-        - '-b'
-        - '${DATABASE_ALIAS}'
-        - postgres
-        - '${DATABASE_PASSWORD}'
-      interval: 10s
-      timeout: 10s
-      retries: 10
-      start_period: 10s
 
   appserver:
     image: 'juliansantosinfo/totvs_appserver:12.1.2510'
@@ -122,7 +110,7 @@ services:
       licenseserver:
         condition: service_started
       dbaccess:
-        condition: service_healthy
+        condition: service_started
 
   apprest:
     image: 'juliansantosinfo/totvs_appserver:12.1.2510'
@@ -163,7 +151,7 @@ services:
       licenseserver:
         condition: service_started
       dbaccess:
-        condition: service_healthy
+        condition: service_started
 
 volumes:
   totvs_postgres_data:
