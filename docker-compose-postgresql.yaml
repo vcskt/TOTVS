@@ -53,13 +53,13 @@ services:
       - '27890:7890'
     environment:
       DATABASE_PROFILE: POSTGRES
-      DATABASE_SERVER: totvs_postgres
+      DATABASE_SERVER: postgres
       DATABASE_PORT: 5432
       DATABASE_ALIAS: protheus
       DATABASE_NAME: protheus
       DATABASE_USERNAME: postgres
       DATABASE_PASSWORD: '${DATABASE_PASSWORD}'
-      DBACCESS_LICENSE_SERVER: totvs_licenseserver
+      DBACCESS_LICENSE_SERVER: licenseserver
       DBACCESS_LICENSE_PORT: 5555
       DBACCESS_CONSOLEFILE: /totvs/dbaccess/multi/dbconsole.log
       TZ: '${TZ}'
@@ -83,13 +83,13 @@ services:
       APPSERVER_MODE: application
       APPSERVER_RPO_CUSTOM: /totvs/protheus/apo/custom.rpo
       APPSERVER_DBACCESS_DATABASE: POSTGRES
-      APPSERVER_DBACCESS_SERVER: totvs_dbaccess
+      APPSERVER_DBACCESS_SERVER: dbaccess
       APPSERVER_DBACCESS_PORT: 7890
       APPSERVER_DBACCESS_ALIAS: '${DATABASE_ALIAS}'
       APPSERVER_CONSOLEFILE: /totvs/protheus/bin/appserver/appserver.log
       APPSERVER_MULTIPROTOCOLPORTSECURE: 0
       APPSERVER_MULTIPROTOCOLPORT: 1
-      APPSERVER_LICENSE_SERVER: totvs_licenseserver
+      APPSERVER_LICENSE_SERVER: licenseserver
       APPSERVER_LICENSE_PORT: '${LICENSE_PORT}'
       APPSERVER_PORT: 25001
       APPSERVER_WEB_PORT: 25002
@@ -122,13 +122,13 @@ services:
       APPSERVER_MODE: rest
       APPSERVER_RPO_CUSTOM: /totvs/protheus/apo/custom.rpo
       APPSERVER_DBACCESS_DATABASE: POSTGRES
-      APPSERVER_DBACCESS_SERVER: totvs_dbaccess
+      APPSERVER_DBACCESS_SERVER: dbaccess
       APPSERVER_DBACCESS_PORT: 7890
       APPSERVER_DBACCESS_ALIAS: '${DATABASE_ALIAS}'
       APPSERVER_CONSOLEFILE: /totvs/protheus/bin/appserver/appserver.log
       APPSERVER_MULTIPROTOCOLPORTSECURE: 0
       APPSERVER_MULTIPROTOCOLPORT: 1
-      APPSERVER_LICENSE_SERVER: totvs_licenseserver
+      APPSERVER_LICENSE_SERVER: licenseserver
       APPSERVER_LICENSE_PORT: '${LICENSE_PORT}'
       APPSERVER_PORT: 25101
       APPSERVER_WEB_PORT: 25102
