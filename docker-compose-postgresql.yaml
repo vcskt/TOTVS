@@ -18,11 +18,11 @@ services:
     healthcheck:
       test:
         - CMD-SHELL
-        - 'pg_isready -U postgres -d protheus'
+        - 'pg_isready -U postgres'
       interval: 10s
       timeout: 5s
-      retries: 10
-      start_period: 60s
+      retries: 20
+      start_period: 120s
 
   licenseserver:
     image: 'juliansantosinfo/totvs_licenseserver:3.7.0'
@@ -70,6 +70,16 @@ services:
         condition: service_healthy
       licenseserver:
         condition: service_started
+    healthcheck:
+      test:
+        - CMD
+        - sh
+        - -c
+        - 'nc -z localhost 7890'
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 120s
 
   appserver:
     image: 'juliansantosinfo/totvs_appserver:12.1.2510'
@@ -110,7 +120,7 @@ services:
       licenseserver:
         condition: service_started
       dbaccess:
-        condition: service_started
+        condition: service_healthy
 
   apprest:
     image: 'juliansantosinfo/totvs_appserver:12.1.2510'
@@ -151,7 +161,7 @@ services:
       licenseserver:
         condition: service_started
       dbaccess:
-        condition: service_started
+        condition: service_healthy
 
 volumes:
   totvs_postgres_data:
