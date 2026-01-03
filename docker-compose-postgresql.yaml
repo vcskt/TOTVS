@@ -29,7 +29,7 @@ services:
     container_name: totvs_licenseserver
     restart: always
     ports:
-      - '8020:8020'
+      - '28020:8020'
     ulimits:
       nofile:
         soft: 65536
@@ -50,7 +50,7 @@ services:
     container_name: totvs_dbaccess
     restart: always
     ports:
-      - '7890:7890'
+      - '27890:7890'
     environment:
       DATABASE_PROFILE: POSTGRES
       DATABASE_SERVER: totvs_postgres
