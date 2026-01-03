@@ -29,7 +29,7 @@ services:
     container_name: totvs_licenseserver
     restart: always
     ports:
-      - '28020:8020'
+      - '8020:8020'
     ulimits:
       nofile:
         soft: 65536
@@ -127,8 +127,6 @@ services:
   apprest:
     image: 'juliansantosinfo/totvs_appserver:12.1.2510'
     container_name: totvs_apprest
-    profiles:
-      - full
     restart: always
     ports:
       - '25101:25101'
