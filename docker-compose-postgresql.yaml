@@ -20,9 +20,9 @@ services:
         - CMD-SHELL
         - 'pg_isready -U postgres -d protheus'
       interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 10s
+      timeout: 10s
+      retries: 10
+      start_period: 30s
 
   licenseserver:
     image: 'juliansantosinfo/totvs_licenseserver:3.7.0'
@@ -75,9 +75,9 @@ services:
         - postgres
         - '${DATABASE_PASSWORD}'
       interval: 10s
-      timeout: 10s
-      retries: 10
-      start_period: 10s
+      timeout: 30s
+      retries: 15
+      start_period: 60s
 
   appserver:
     image: 'juliansantosinfo/totvs_appserver:12.1.2510'
