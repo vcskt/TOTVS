@@ -65,21 +65,6 @@ services:
       TZ: '${TZ}'
     networks:
       - totvs
-    depends_on:
-      postgres:
-        condition: service_healthy
-      licenseserver:
-        condition: service_started
-    healthcheck:
-      test:
-        - CMD
-        - sh
-        - -c
-        - 'nc -z localhost 7890'
-      interval: 30s
-      timeout: 10s
-      retries: 5
-      start_period: 120s
 
   appserver:
     image: 'juliansantosinfo/totvs_appserver:12.1.2510'
@@ -117,10 +102,8 @@ services:
     networks:
       - totvs
     depends_on:
-      licenseserver:
-        condition: service_started
-      dbaccess:
-        condition: service_healthy
+      - licenseserver
+      - dbaccess
 
   apprest:
     image: 'juliansantosinfo/totvs_appserver:12.1.2510'
@@ -158,10 +141,8 @@ services:
     networks:
       - totvs
     depends_on:
-      licenseserver:
-        condition: service_started
-      dbaccess:
-        condition: service_healthy
+      - licenseserver
+      - dbaccess
 
 volumes:
   totvs_postgres_data:
