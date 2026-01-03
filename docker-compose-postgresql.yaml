@@ -21,8 +21,8 @@ services:
         - 'pg_isready -U postgres -d protheus'
       interval: 10s
       timeout: 5s
-      retries: 5
-      start_period: 10s
+      retries: 10
+      start_period: 60s
 
   licenseserver:
     image: 'juliansantosinfo/totvs_licenseserver:3.7.0'
