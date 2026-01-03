@@ -23,6 +23,7 @@ services:
       timeout: 5s
       retries: 5
       start_period: 10s
+
   licenseserver:
     image: 'juliansantosinfo/totvs_licenseserver:3.7.0'
     container_name: totvs_licenseserver
@@ -39,6 +40,7 @@ services:
       TZ: '${TZ}'
     networks:
       - totvs
+
   dbaccess:
     image: 'juliansantosinfo/totvs_dbaccess:24.1.1.0'
     container_name: totvs_dbaccess
@@ -76,6 +78,7 @@ services:
       timeout: 10s
       retries: 10
       start_period: 10s
+
   appserver:
     image: 'juliansantosinfo/totvs_appserver:12.1.2510'
     container_name: totvs_appserver
@@ -114,6 +117,7 @@ services:
         condition: service_started
       dbaccess:
         condition: service_healthy
+
   apprest:
     image: 'juliansantosinfo/totvs_appserver:12.1.2510'
     container_name: totvs_apprest
@@ -154,9 +158,11 @@ services:
         condition: service_started
       dbaccess:
         condition: service_healthy
+
 volumes:
   totvs_postgres_data:
     driver: local
+
 networks:
   totvs:
     driver: bridge
