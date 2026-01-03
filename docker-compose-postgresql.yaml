@@ -29,7 +29,7 @@ services:
     container_name: totvs_licenseserver
     restart: always
     ports:
-      - '8020:8020'
+      - '28020:8020'
     ulimits:
       nofile:
         soft: 65536
@@ -40,6 +40,8 @@ services:
       LICENSE_PORT: '${LICENSE_PORT}'
       LICENSE_WEBAPP_PORT: '${LICENSE_WEBAPP_PORT}'
       TZ: '${TZ}'
+    volumes:
+      - 'totvs_licenseserver_data:/totvs/licenseserver'
     networks:
       - totvs
 
@@ -112,6 +114,8 @@ services:
       APPSERVER_WEB_MANAGER: 25088
       EXTRACT_RESOURCES: 'true'
       TZ: '${TZ}'
+    volumes:
+      - 'totvs_appserver_data:/totvs/protheus'
     networks:
       - totvs
     depends_on:
@@ -153,6 +157,8 @@ services:
       APPSERVER_WEB_MANAGER: 25188
       EXTRACT_RESOURCES: 'true'
       TZ: '${TZ}'
+    volumes:
+      - 'totvs_appserver_rest_data:/totvs/protheus'
     networks:
       - totvs
     depends_on:
@@ -163,6 +169,12 @@ services:
 
 volumes:
   totvs_postgres_data:
+    driver: local
+  totvs_licenseserver_data:
+    driver: local
+  totvs_appserver_data:
+    driver: local
+  totvs_appserver_rest_data:
     driver: local
 
 networks:
